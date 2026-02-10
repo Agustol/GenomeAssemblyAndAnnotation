@@ -62,7 +62,7 @@ repeat content.
 
 ## Model fit and peak structure (linear-scaled view)
 
-![GenomeScope profile, linear scale](kmer/figures/kmer_spectrum_normal.png)
+![GenomeScope profile, linear scale](kmers/figures/kmer_spectrum_normal.png)
 
 The linear-scale view highlights the **central coverage range** where GenomeScope
 fits its model.
