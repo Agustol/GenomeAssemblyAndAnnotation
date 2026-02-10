@@ -8,7 +8,7 @@ HiFi CCS reads using *k = 21* and assuming diploidy (*p = 2*).
 
 ## Conceptual overview: how k-mer spectra work
 
-![Conceptual k-mer spectrum](/QC/kmer/figures/kmer_spectrum_schematic.png)
+![Conceptual k-mer spectrum](kmer_spectrum_schematic.png)
 
 This schematic illustrates how k-mer spectra are generated and why they encode
 genome properties.
