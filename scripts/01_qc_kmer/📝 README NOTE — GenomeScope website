@@ -1,0 +1,14 @@
+### Note on GenomeScope visualization
+
+GenomeScope can be run locally (as done in this pipeline) or via the
+GenomeScope web interface:
+
+https://genomescope.org/
+
+The web interface is used **for visualization and exploratory inspection only**.
+All quantitative results reported in this repository (genome size,
+heterozygosity, repeat content, error rate, and model fit) are generated from
+the **local GenomeScope 2.0 command-line runs** to ensure full reproducibility.
+
+The web interface does not replace the local analysis and should not be treated
+as an independent computational step.
