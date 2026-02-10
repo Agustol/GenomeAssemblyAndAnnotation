@@ -31,7 +31,7 @@ properties without requiring a reference genome.
 
 ## Observed k-mer spectrum (log-scaled view)
 
-![GenomeScope profile, log scale](kmers/figures/kmer_spectrum_normal_log.png)
+![GenomeScope profile, log scale](kmers/figures/kmer_spectrum_normal.png)
 
 This plot shows the **full k-mer spectrum on a log-scaled y-axis**, allowing
 visualization of low-frequency k-mers (errors) and high-copy k-mers (repeats).
