@@ -14,7 +14,7 @@ The pipeline is designed to be:
 
 ## Workflow overview
 
-![PacBio HiFi genome assembly and annotation workflow](docs/figures/workflow/pacbio_hifi_workflow.png)
+![PacBio HiFi genome assembly and annotation workflow](docs/figures/pacbio_hifi_workflow.png)
 
 This figure summarizes the complete workflow implemented in this repository, from raw PacBio HiFi reads to a scaffolded, annotated genome with multiple layers of quality assessment.
 
