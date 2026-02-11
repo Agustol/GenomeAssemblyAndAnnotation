@@ -10,11 +10,6 @@ It provides **reference-free** estimates of:
 **Reference:** Rhie et al. 2020, *Genome Biology*  
 https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02134-9
 
-
-## Graphical Summary: How Merqury Works
-
-![Merqury workflow](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/merqury_workflow.png)
-
 **Merqury workflow overview.** Reads and assemblies are converted to k-mer databases using **meryl**.  
 Merqury compares read k-mers vs assembly k-mers to classify k-mers (shared/correct, read-only/missing, and assembly-specific groups) and reports QV, completeness, and haplotype separation metrics.
 
