@@ -16,7 +16,7 @@ https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02134-9
 
 Place these files exactly here:
 
-- `docs/figures/merqury_workflow.png`  (the workflow figure)
+- `https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/merqury_workflow.png`  (the workflow figure)
 - `figures/merqury_spectra.png`   (your uploaded spectra plot)
 
 Then GitHub will render them automatically.
