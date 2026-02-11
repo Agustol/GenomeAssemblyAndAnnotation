@@ -1,7 +1,7 @@
 # How Hifiasm Works
 
 **Figure 1 (assembly graph and haplotype bubbles):**  
-![Hifiasm workflow](figures/hifiasm_algorithm.png)
+![Hifiasm workflow](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/hifiasm_algorithm.png)
 
 Hifiasm assembles genomes from PacBio HiFi long reads by building an assembly graph based on read overlaps.
 
