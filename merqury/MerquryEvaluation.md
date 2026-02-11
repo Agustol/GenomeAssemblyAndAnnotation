@@ -25,7 +25,7 @@ Then GitHub will render them automatically.
 
 ## Graphical Summary: How Merqury Works
 
-![Merqury workflow](figures/merqury_workflow.png)
+![Merqury workflow](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/merqury_workflow.png)
 
 **Merqury workflow overview.** Reads and assemblies are converted to k-mer databases using **meryl**.  
 Merqury compares read k-mers vs assembly k-mers to classify k-mers (shared/correct, read-only/missing, and assembly-specific groups) and reports QV, completeness, and haplotype separation metrics.
