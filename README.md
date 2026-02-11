@@ -1,5 +1,5 @@
 
-# PacBio HiFi Genome Assembly & Annotation Pipeline
+# 🧬 PacBio HiFi Genome Assembly & Annotation Pipeline
 
 This repository provides a **complete, modular workflow** for **de novo genome assembly and annotation** using **PacBio HiFi sequencing data**.  
 It covers the full process from **raw-read quality control** to **chromosome-scale scaffolding** and **annotation evaluation**, following current best practices for long-read assemblies.
