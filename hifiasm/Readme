@@ -33,3 +33,4 @@ Hifiasm works as follows:
 4. Extracts phased genome sequences  
 
 This graph-based approach enables accurate and biologically realistic genome assemblies from PacBio HiFi data.
+
