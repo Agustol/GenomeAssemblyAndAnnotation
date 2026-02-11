@@ -16,7 +16,7 @@ https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02134-9
 
 Place these files exactly here:
 
-- `figures/merqury_workflow.png`  (the workflow figure)
+- `docs/figures/merqury_workflow.png`  (the workflow figure)
 - `figures/merqury_spectra.png`   (your uploaded spectra plot)
 
 Then GitHub will render them automatically.
