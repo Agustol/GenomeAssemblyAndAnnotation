@@ -49,7 +49,7 @@ These categories provide an objective measure of gene-space completeness.
 
 ## 📊 Output example
 
-![BUSCO workflow](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/busco_workflow.png)
+![BUSCO workflow](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/busco_figure.png)
 
 
 ---
