@@ -18,7 +18,7 @@ Merqury compares read k-mers vs assembly k-mers to classify k-mers (shared/corre
 ---
 ## Merqury Spectra Plot Interpretation
 
-![Merqury spectra plot](figures/merqury_spectra.png)
+![Merqury spectra plot](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/merqury_spectra.png)
 
 **Figure.** Merqury k-mer spectra plot showing how sequencing read k-mers are represented in the primary and alternate assemblies.
 
