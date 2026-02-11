@@ -38,4 +38,4 @@ This step enriches for mtDNA and removes most nuclear reads, including NUMTs.
 
 **Output:**
 
-![MitoHiFi Output](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/mitohifi_workflow.png)
+![MitoHiFi Output](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/final_mitogenome.annotatio.figure.png)
