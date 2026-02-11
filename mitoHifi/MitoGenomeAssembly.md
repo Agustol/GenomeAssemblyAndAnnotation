@@ -1,4 +1,4 @@
-## 🧬 MitoHiFi Workflow: Mitochondrial Genome Assembly and Annotation
+## MitoHiFi Workflow: Mitochondrial Genome Assembly and Annotation
 
 This repository uses **MitoHiFi** to generate high-quality, circularized, and fully annotated mitochondrial genomes from long-read sequencing data.
 
@@ -8,7 +8,7 @@ MitoHiFi is optimized for PacBio HiFi (and compatible Nanopore) reads and provid
 
 ### 📌 Workflow Overview
 
-![MitoHiFi Workflow](figures/mitohifi_workflow.png)
+![MitoHiFi Workflow](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/mitohifi_workflow.png)
 
 **Figure.** Overview of the MitoHiFi pipeline for mitochondrial genome assembly, circularization, polishing, annotation, and quality control.
 
