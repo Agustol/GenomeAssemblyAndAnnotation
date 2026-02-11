@@ -35,6 +35,6 @@ MitoHiFi identifies mitochondrial reads by:
 - Using sequence similarity and k-mer filtering
 
 This step enriches for mtDNA and removes most nuclear reads, including NUMTs.
-
+**Figure.** Final graphical outputexample.
 **Output:**
 
