@@ -22,7 +22,7 @@ These categories provide an objective measure of gene-space completeness.
 
 ## 📊 How BUSCO Works (Graphical Summary)
 
-![BUSCO workflow](figures/busco_workflow.png)
+![BUSCO workflow](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/busco_workflow.png)
 
 **Figure 1.** Conceptual overview of the BUSCO pipeline for genome assembly evaluation.
 
@@ -48,7 +48,5 @@ These categories provide an objective measure of gene-space completeness.
    Results are summarized in tables and plots showing genome completeness.
 
 ---
-
-## 📁 Directory Structure
 
 
