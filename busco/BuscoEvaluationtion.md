@@ -1,4 +1,4 @@
-# 🧬 Genome Assembly Evaluation with BUSCO
+# Genome Assembly Evaluation with BUSCO
 
 This repository documents the evaluation of genome assemblies using BUSCO (Benchmarking Universal Single-Copy Orthologs). BUSCO measures genome completeness by searching for conserved genes expected to be present in a given lineage.
 
@@ -46,7 +46,8 @@ These categories provide an objective measure of gene-space completeness.
 
 5. **Summary Report**  
    Results are summarized in tables and plots showing genome completeness.
-
+ **Figure 2 .**  Output example
+   https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/busco_figure.png
 ---
 
 
