@@ -16,7 +16,7 @@
   Query contigs are ordered according to the coordinate positions of their primary alignments on the reference. Orientation is set to match that of the primary alignment, producing a scaffold that reflects the reference’s structure. :contentReference[oaicite:3]{index=3}
 
 - **Gap placement and sizing:**  
-  Adjacent contigs are connected by artificial gaps (e.g., 100 bp of `N`s by default), indicating unknown sequence between them. Optionally, RagTag can *infer gap lengths* based on reference alignment coordinates when possible. :contentReference[oaicite:4]{index=4}
+  Adjacent contigs are connected by artificial gaps (e.g., 100 bp of `N`s by default), indicating unknown sequence between them. Optionally, RagTag can *infer gap lengths* based on reference alignment coordinates when possible.
 
 ### When to Use RagTag
 
@@ -39,5 +39,4 @@ RagTag is most appropriate when:
 - `ragtag.py patch` — fill gaps and make joins from complementary assemblies  
 - `ragtag.py merge` — merge multiple scaffold solutions
 
-The tool suite also includes utilities to convert, validate, and manipulate assembly and scaffold file formats. :contentReference[oaicite:6]{index=6}
-
+The tool suite also includes utilities to convert, validate, and manipulate assembly and scaffold file formats. 
