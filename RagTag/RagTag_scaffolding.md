@@ -2,6 +2,8 @@
 
 **RagTag** is a widely used bioinformatics toolset designed to improve and scaffold genome assemblies by leveraging homology to a high-quality reference genome. It extends and generalizes the principles introduced by RaGOO, offering a flexible and robust framework for ordering and orienting draft assembly contigs relative to a trusted reference sequence. :contentReference[oaicite:0]{index=0}
 
+![RagTag Workflow](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/mitohifi_workflow.png)
+
 ### Key Concepts
 
 - **Reference that informs scaffolding:**  
