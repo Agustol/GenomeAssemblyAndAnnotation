@@ -1,4 +1,4 @@
-# Hi-C preprocessing workflow from `run_fastp.sh` and `hic_map.sh`
+# Hi-C preprocessing workflow`
 
 This README documents the exact workflow represented by the two SLURM scripts. It is intentionally script-faithful: active steps are separated from commented (inactive) ones.
 
