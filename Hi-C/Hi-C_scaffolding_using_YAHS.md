@@ -1,157 +1,140 @@
- Hi-C preprocessing workflow from `run_fastp.sh` and `hic_map.sh`
+# Hi-C preprocessing workflow from `run_fastp.sh` and `hic_map.sh`
 
-This README documents the exact workflow represented by the two SLURM scripts you provided. It is intentionally **script-faithful**: steps that are active in the scripts are distinguished from steps that are present but currently commented out.
-
-## Overview
-
-The workflow is split into two scripts:
-
-1. **`run_fastp.sh`**
-   - trims adapters from the paired-end Hi-C reads
-   - produces cleaned FASTQ files and QC reports
-2. **`hic_map.sh`**
-   - is intended to map the trimmed reads to the reference and process the BAM
-   - however, in the current version of the script, the mapping and filtering sections are commented out
-   - the active part starts from an already existing `mapped.raw.fixmate.bam`
-
-## Input and output flow
-
-### Script 1 — `run_fastp.sh`
-
-**Inputs**
-- `1230-BirdMuscle_S1_R1_001.fastq.gz`
-- `1230-BirdMuscle_S1_R2_001.fastq.gz`
-
-**Active command**
-- `fastp`
-
-**What it does**
-- removes the adapter sequences explicitly supplied with `--adapter_sequence` and `--adapter_sequence_r2`
-- runs with `--thread 34`
-- generates both cleaned reads and QC summaries
-
-**Outputs**
-- `trimmed_R1.fastq.gz`
-- `trimmed_R2.fastq.gz`
-- `fastp_report.html`
-- `fastp_report.json`
-
-These trimmed FASTQ files are the read inputs referenced in `hic_map.sh`.
+This README documents the exact workflow represented by the two SLURM scripts. It is intentionally script-faithful: active steps are separated from commented (inactive) ones.
 
 ---
 
-### Script 2 — `hic_map.sh`
+## Overview
 
-**Reference and read variables**
-- `REF="CoerebaFlaveola.softmasked.fasta"`
-- `READ1="trimmed_R1.fastq.gz"`
-- `READ2="trimmed_R2.fastq.gz"`
+The workflow consists of two scripts:
 
-### Commented-out upstream section
+1. `run_fastp.sh`  
+   - trims adapters from paired-end Hi-C reads  
+   - produces cleaned FASTQ files and QC reports  
 
-These commands are present in the script but currently disabled:
+2. `hic_map.sh`  
+   - processes mapped reads into a deduplicated BAM  
+   - mapping and upstream steps are currently commented  
+   - active workflow starts from `mapped.raw.fixmate.bam`  
 
-1. **Reference indexing**
-   - `bwa index $REF`
-2. **Hi-C read mapping**
-   - `bwa mem -t 24 -5SP $REF $READ1 $READ2 | samtools view -bS - > mapped.raw.bam`
-3. **Mate fixing**
-   - `samtools fixmate -m mapped.raw.bam mapped.raw.fixmate.bam -@24`
+---
 
-#### Why these steps matter
-- `bwa mem -5SP` is a common Hi-C mapping configuration because Hi-C reads can be chimeric and may include split alignments.
-- `samtools fixmate -m` prepares mate information needed before duplicate marking.
+## Workflow
 
-### Active executable section
+![Hi-C workflow](hic_workflow_from_scripts.png)
 
-As the script is currently written, the workflow **starts from**:
+---
+
+## Script 1 — `run_fastp.sh`
+
+### Inputs
+- paired-end FASTQ files (`R1`, `R2`)
+
+### What it runs
+- `fastp`
+
+### What it does
+- removes adapter sequences  
+- performs quality filtering  
+- generates QC reports  
+
+### Outputs
+- `trimmed_R1.fastq.gz`  
+- `trimmed_R2.fastq.gz`  
+- `fastp_report.html`  
+- `fastp_report.json`  
+
+---
+
+## Script 2 — `hic_map.sh`
+
+### Inputs
+- reference genome (`REF`)  
+- trimmed reads (`READ1`, `READ2`)  
+
+---
+
+## Commented (inactive) upstream steps
+
+- `bwa index $REF`  
+- `bwa mem -t 24 -5SP $REF $READ1 $READ2 | samtools view -bS - > mapped.raw.bam`  
+- `samtools fixmate -m mapped.raw.bam mapped.raw.fixmate.bam -@24`  
+
+### Why these matter
+- `bwa mem -5SP` handles chimeric Hi-C reads  
+- `samtools fixmate` is required before duplicate removal  
+
+---
+
+## Active steps in `hic_map.sh`
+
+### Input requirement
 - `mapped.raw.fixmate.bam`
 
-The active commands are:
+### What currently runs
+- raw FASTQ → `fastp` → trimmed FASTQ  
+- existing `mapped.raw.fixmate.bam` → `samtools sort` → `samtools index` → `samtools markdup` → `samtools index`  
 
-1. **Sorting**
-   - `samtools sort -@ 24 -o mapped.sorted.bam mapped.raw.fixmate.bam`
-2. **Index sorted BAM**
-   - `samtools index mapped.sorted.bam`
-3. **Duplicate removal with samtools**
-   - `samtools markdup -r mapped.sorted.bam mapped.dedup.bam -@24`
-4. **Index deduplicated BAM**
-   - `samtools index mapped.dedup.bam`
+---
 
-### Alternative duplicate-removal path
+## Alternative duplicate removal (commented)
 
-An alternative duplicate-removal block is present but commented out:
+- `Picard MarkDuplicates`
 
-- `picard MarkDuplicates`
-  - `I=mapped.sorted.bam`
-  - `O=mapped.dedup.bam`
-  - `M=metrics.txt`
-  - `REMOVE_DUPLICATES=true`
+### Interpretation
+- same function as `samtools markdup`  
+- produces duplication metrics (`metrics.txt`)  
+- should be considered an alternative, not an additional step  
 
-### Similarity between Picard and samtools duplicate handling
+---
 
-Both approaches aim to identify and remove duplicate alignments, but they are different implementations.
+## Optional filtering (commented)
 
-- **`samtools markdup -r`**
-  - currently active in your script
-  - lightweight and fully within the samtools workflow
-- **`Picard MarkDuplicates`**
-  - currently commented out
-  - performs the same conceptual task: duplicate detection/removal
-  - additionally writes a duplication metrics file (`metrics.txt`)
+- `samtools view -f 2 -q 10 -o hic.filtered.bam mapped.dedup.bam`  
+- `samtools index hic.filtered.bam`  
 
-So in the workflow figure, these should be represented as **alternative duplicate-handling branches**, not as independent required steps.
+---
 
-### Optional downstream filtering block
+## Important note
 
-A final filtering section is also present but commented out:
+`hic_map.sh` is not self-contained.
 
-- `samtools view -@ 16 -b -f 2 -q 10 -o hic.filtered.bam mapped.dedup.bam`
-- `samtools index hic.filtered.bam`
+It requires:
+- `mapped.raw.fixmate.bam`
 
-This block would keep:
-- properly paired reads (`-f 2`)
-- reads with mapping quality at least 10 (`-q 10`)
+---
 
-Because it is commented out, **`hic.filtered.bam` is not produced by the current script version**.
+## How to run
 
-## Important implementation note
+### Step 1 — trimming
+- `sbatch run_fastp.sh R1.fastq.gz R2.fastq.gz`
 
-The current `hic_map.sh` is not a fully self-contained end-to-end script because the active path assumes that `mapped.raw.fixmate.bam` already exists.
+### Step 2 — mapping / processing
+- `sbatch hic_map.sh reference.fasta trimmed_R1.fastq.gz trimmed_R2.fastq.gz`
 
-That means the practical execution state is:
+---
 
-- `run_fastp.sh` **does run end-to-end**
-- `hic_map.sh` **only runs end-to-end if** `mapped.raw.fixmate.bam` has already been created elsewhere, or if the commented mapping + fixmate commands are re-enabled
+## Execution modes
 
-## Conceptual workflow summary
+### Full pipeline
+- uncomment:
+  - `bwa mem`
+  - `samtools fixmate`
+
+### Partial pipeline
+- requires existing `mapped.raw.fixmate.bam`
+
+---
+
+## Conceptual summary
 
 ### What currently runs
-- raw FASTQ → `fastp` → trimmed FASTQ
-- existing `mapped.raw.fixmate.bam` → `samtools sort` → `samtools index` → `samtools markdup -r` → `samtools index`
+- raw FASTQ → `fastp` → trimmed FASTQ  
+- existing `mapped.raw.fixmate.bam` → `samtools sort` → `samtools index` → `samtools markdup` → `samtools index`  
 
-### What is encoded in the script but disabled
-- `bwa index`
-- `bwa mem -5SP`
-- `samtools fixmate -m`
-- `Picard MarkDuplicates`
-- final `samtools view` filtering to `hic.filtered.bam`
-
-## Suggested figure interpretation
-
-To stay faithful to the scripts, the workflow diagram should show:
-
-- `run_fastp.sh` as the first module
-- the trimmed reads feeding into `hic_map.sh`
-- a **commented upstream mapping path** inside `hic_map.sh`
-- the **active executable path** beginning at `mapped.raw.fixmate.bam`
-- **duplicate removal as two alternatives**:
-  - samtools markdup
-  - Picard MarkDuplicates
-- the final filtering block as **optional/commented**, not as a guaranteed output
-
-## Files produced here
-
-- `hic_workflow_from_scripts.svg` — workflow figure
-- `README_hic_workflow.md` — this README
-
+### What is encoded but disabled
+- `bwa index`  
+- `bwa mem -5SP`  
+- `samtools fixmate`  
+- `Picard MarkDuplicates`  
+- `samtools view` filtering  
