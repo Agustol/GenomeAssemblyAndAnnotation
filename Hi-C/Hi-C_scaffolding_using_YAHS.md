@@ -24,6 +24,15 @@ The workflow consists of two scripts:
 ![Hi-C workflow](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/hic_workflow.png)
 
 ---
+## Installation
+
+Install the required tools using Conda:
+
+```bash
+conda create -n genome_tools -y
+conda activate genome_tools
+
+conda install -c bioconda fastp yahs
 
 ## Script 1 — `run_fastp.sbatch`
 
