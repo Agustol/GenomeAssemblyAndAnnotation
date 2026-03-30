@@ -21,7 +21,7 @@ The workflow consists of two scripts:
 
 ## Workflow
 
-![Hi-C workflow](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/busco_figure.png)
+![Hi-C workflow](https://github.com/Agustol/GenomeAssemblyAndAnnotation/blob/main/docs/figures/hic_workflow.png)
 
 ---
 
