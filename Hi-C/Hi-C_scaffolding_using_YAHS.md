@@ -44,6 +44,8 @@ The workflow consists of two scripts:
 - `fastp_report.html`  
 - `fastp_report.json`  
 
+### Note
+- change adapter sequences
 ---
 
 ## Script 2 — `hic_map.sbatch`
