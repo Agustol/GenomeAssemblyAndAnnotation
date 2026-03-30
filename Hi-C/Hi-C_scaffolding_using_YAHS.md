@@ -8,11 +8,11 @@ This README documents the exact workflow represented by the two SLURM scripts. I
 
 The workflow consists of two scripts:
 
-1. `run_fastp.sh`  
+1. `run_fastp.sbatch`  
    - trims adapters from paired-end Hi-C reads  
    - produces cleaned FASTQ files and QC reports  
 
-2. `hic_map.sh`  
+2. `hic_map.sbatch`  
    - processes mapped reads into a deduplicated BAM  
    - mapping and upstream steps are currently commented  
    - active workflow starts from `mapped.raw.fixmate.bam`  
