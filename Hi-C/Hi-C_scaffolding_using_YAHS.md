@@ -25,7 +25,7 @@ The workflow consists of two scripts:
 
 ---
 
-## Script 1 — `run_fastp.sh`
+## Script 1 — `run_fastp.sbatch`
 
 ### Inputs
 - paired-end FASTQ files (`R1`, `R2`)
@@ -46,7 +46,7 @@ The workflow consists of two scripts:
 
 ---
 
-## Script 2 — `hic_map.sh`
+## Script 2 — `hic_map.sbatch`
 
 ### Inputs
 - reference genome (`REF`)  
