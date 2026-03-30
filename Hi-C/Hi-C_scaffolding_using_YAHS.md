@@ -1,4 +1,4 @@
-# Hi-C preprocessing workflow`
+# Hi-C preprocessing workflow
 
 This README documents the exact workflow represented by the two SLURM scripts. It is intentionally script-faithful: active steps are separated from commented (inactive) ones.
 
